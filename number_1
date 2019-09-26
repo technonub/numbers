@@ -1,0 +1,43 @@
+
+package lab_210;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+ 
+public class Lab_210 {
+ 
+    public static void main(String[] args) {
+        List<Integer> result = new ArrayList<>();
+        System.out.println("Enter number (0 - exit) : ");
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            String input = scanner.nextLine();
+            if ("0".equals(input)) {
+                System.out.println("Exit!");
+                break;
+            }
+            int num = getMaxEvenNumber(input);
+            if (num != 0) {
+                result.add(num);
+            }
+        }
+        System.out.println("-----------\n");
+        System.out.println(result);
+        scanner.close();
+    }
+ 
+    private static int getMaxEvenNumber(String input) {
+        int max = 0;
+        for (char c : input.toCharArray()) {
+            int value = Character.getNumericValue(c);
+            if (value % 2 == 0) {
+                max = Math.max(value, max);
+            }
+        }
+        return max;
+
+
+    }
+    
+}
